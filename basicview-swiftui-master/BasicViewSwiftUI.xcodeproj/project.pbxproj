@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60267E4C2B9A032B002F150E /* GraphViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60267E4B2B9A032B002F150E /* GraphViewExample.swift */; };
 		B36824CC23F28DF000AC67D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36824CB23F28DF000AC67D3 /* AppDelegate.swift */; };
 		B36824CE23F28DF000AC67D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36824CD23F28DF000AC67D3 /* SceneDelegate.swift */; };
 		B36824D223F28DF200AC67D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B36824D123F28DF200AC67D3 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		60267E4B2B9A032B002F150E /* GraphViewExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewExample.swift; sourceTree = "<group>"; };
 		B36824C823F28DF000AC67D3 /* BasicViewSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicViewSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36824CB23F28DF000AC67D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B36824CD23F28DF000AC67D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				B36824FE23F2904F00AC67D3 /* TextViewExample.swift */,
 				B368250023F2905900AC67D3 /* TextFieldExample.swift */,
 				B368250223F2906300AC67D3 /* StackViewExample.swift */,
+				60267E4B2B9A032B002F150E /* GraphViewExample.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				B368250323F2906300AC67D3 /* StackViewExample.swift in Sources */,
 				B368250823F29A1B00AC67D3 /* BaseTabView.swift in Sources */,
+				60267E4C2B9A032B002F150E /* GraphViewExample.swift in Sources */,
 				B36824FF23F2904F00AC67D3 /* TextViewExample.swift in Sources */,
 				B368250E23F29A9200AC67D3 /* SettingView.swift in Sources */,
 				B368251123F29C9E00AC67D3 /* Menu.swift in Sources */,
@@ -511,6 +515,7 @@
 				DEVELOPMENT_TEAM = V7FHFNY5R8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BasicViewSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -531,6 +536,7 @@
 				DEVELOPMENT_TEAM = V7FHFNY5R8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BasicViewSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

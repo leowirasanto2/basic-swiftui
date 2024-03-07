@@ -12,7 +12,8 @@ struct HomeView: View {
     var menus: [Menu] = [
         Menu(id: 0, name: "TextView"),
         Menu(id: 1, name: "TextField"),
-        Menu(id: 2, name: "StackView")
+        Menu(id: 2, name: "StackView"),
+        Menu(id: 3, name: "GraphView")
     ]
 
     var body: some View {
@@ -30,12 +31,15 @@ struct HomeView: View {
     }
 
     func getDetail(menu: Menu) -> AnyView {
-        if menu.id == 0 {
+        switch menu.id {
+        case 0:
             return AnyView(TextViewExample())
-        } else if menu.id == 1 {
+        case 1:
             return AnyView(TextFieldExampleView())
-        } else {
+        case 2:
             return AnyView(StackViewExample())
+        default:
+            return AnyView(GraphViewExample())
         }
     }
 }
