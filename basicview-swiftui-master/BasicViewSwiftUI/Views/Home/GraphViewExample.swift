@@ -11,7 +11,7 @@ import Charts
 import SwiftUI
 
 struct GraphViewExample: View {
-    var dataPoints: [DummyDataPoint] = generateDummyDataPoints(count: 22)
+    @State var chart: ChartFilterSegment = .sevenDays
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,43 +21,65 @@ struct GraphViewExample: View {
             
             Divider()
             
-            Chart {
-                ForEach(dataPoints) { point in
-                    LineMark(
-                        x: .value("Type", point.count),
-                        y: .value("Count", point.type)
-                    )
+            VStack {
+                HStack {
+                    Text("Summary")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                    
+                    Picker("", selection: $chart) {
+                        Text(ChartFilterSegment.sevenDays.rawValue)
+                            .tag(ChartFilterSegment.sevenDays)
+                        Text(ChartFilterSegment.twoWeeks.rawValue)
+                            .tag(ChartFilterSegment.twoWeeks)
+                        Text(ChartFilterSegment.month.rawValue)
+                            .tag(ChartFilterSegment.month)
+                    }
+                    .padding(.leading, 64)
+                    .pickerStyle(.segmented)
                 }
-            }
-            .chartLegend(position: .trailing, alignment: .top)
-            .frame(height: 300)
+                Chart {
+                    ForEach(chart.dataPoint) { point in
+                        LineMark(
+                            x: .value("Date", point.day),
+                            y: .value("Total Energy", point.totalEnergyInKw)
+                        )
+                        .foregroundStyle(by: .value("Value", "Total Energy"))
+                        
+                        LineMark(
+                            x: .value("Date", point.day),
+                            y: .value("Total paid", point.totalPaymentInPounds)
+                        )
+                        .foregroundStyle(by: .value("Value", "Total paid"))
+                    }
+                    .interpolationMethod(.linear)
+                    .lineStyle(StrokeStyle(lineWidth: 2))
+                }
+                .chartYAxisLabel(position: .leading) {
+                    Text("Total energy")
+                }
+                .chartXAxisLabel(position: .bottom, alignment: .center) {
+                    Text("Day")
+                }
+                .chartXAxis {
+                    AxisMarks(position: .bottom, values: .stride(by: .day, count: 2)) { _ in
+                        AxisTick()
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.day(), centered: true)
+                    }
+                }
+                .chartLegend(position: .bottom, alignment: .top, spacing: 16)
+                .frame(height: 300)
             .padding()
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 18))
             
             Spacer()
         }
+        .padding()
     }
 }
 
 #Preview {
     GraphViewExample()
 }
-
-func generateDummyDataPoints(count: Int) -> [DummyDataPoint] {
-    let dataTypes = ["pagi", "siang", "sore", "malam"]
-    var dataPoints = [DummyDataPoint]()
-    
-    for counter in 0..<count {
-        let randomType = dataTypes.randomElement()!
-        let index = Double(counter)
-        dataPoints.append(DummyDataPoint(type: randomType, count: index))
-    }
-    return dataPoints
-}
-
-struct DummyDataPoint: Identifiable {
-    var id = UUID()
-    var type: String
-    var count: Double
-}
-
-
